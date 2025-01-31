@@ -16,6 +16,9 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log('Connected to MongoDB'))
   .catch((error) => console.error(error));
 
+app.get('/', (req, res) => {
+    res.send('Backend running on Render');
+  });
 app.use('/api', postRoutes);
 
 
