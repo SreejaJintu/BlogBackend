@@ -7,7 +7,7 @@ const postRoutes = require('./routes/postRoutes');
 dotenv.config();
 const app = express();
 
-app.use(cors({ origin: ['http://localhost:3000','https://blogassignment.onrender.com'], credentials: true }));
+app.use(cors({ origin: 'https://blogassignment.onrender.com', credentials: true }));
 
 app.use(express.json());
 
