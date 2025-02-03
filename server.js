@@ -7,7 +7,17 @@ const postRoutes = require('./routes/postRoutes');
 dotenv.config();
 const app = express();
 
-app.use(cors({ origin: 'https://blogassignment.onrender.com', credentials: true }));
+const allowedOrigins = ['https://blogassignment.onrender.com', 'https://your-frontend.onrender.com'];
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+}));
 
 app.use(express.json());
 
